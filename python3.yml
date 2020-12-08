@@ -7,8 +7,13 @@
       apt: 
         state: latest
         name: "python3"
-    - name: line insert
+    - name: root python fix
       lineinfile:
         path: /root/.bashrc
+        line: 'alias python=python3'
+        insertbefore: BOF
+    - name: jim python fix
+      lineinfile:
+        path: /jim/.bashrc
         line: 'alias python=python3'
         insertbefore: BOF
