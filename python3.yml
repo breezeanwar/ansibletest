@@ -14,6 +14,6 @@
         insertbefore: BOF
     - name: jim python fix
       lineinfile:
-        path: /jim/.bashrc
+        path: /home/jim/.bashrc
         line: 'alias python=python3'
         insertbefore: BOF
