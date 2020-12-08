@@ -1,31 +1,31 @@
 ---
-- name: install
-  apt:
-    name: "{{ nano_dependencies }}"
-    state: "{{ apt_install_state | default('latest') }}"
-    update_cache: true
-    cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
-  tags:
-    - configuration
-    - nano
-    - nano-install
+ - name: install
+   apt:
+     name: "{{ nano_dependencies }}"
+     state: "{{ apt_install_state | default('latest') }}"
+     update_cache: true
+     cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
+   tags:
+     - configuration
+     - nano
+     - nano-install
 
-- include: install-improved-nanorc.yml
-  when: nano_improved_nanorc_install
-  tags:
-    - configuration
-    - nano
-    - nano-improved-nanorc
+ - include: install-improved-nanorc.yml
+   when: nano_improved_nanorc_install
+   tags:
+     - configuration
+     - nano
+     - nano-improved-nanorc
 
-- name: create configuration file
-  template:
-    src: etc/nanorc.j2
-    dest: "{{ item.value.dest }}/.nanorc"
-    owner: "{{ item.value.owner | default('root') }}"
-    group: "{{ item.value.group | default(item.value.owner) | default('root') }}"
-    mode: "{{ item.value.mode | default('0644') }}"
-  with_dict: "{{ nano_nanorc_destinations }}"
-  tags:
-    - configuration
-    - nano
-    - nano-configuration
+ - name: create configuration file
+   template:
+     src: etc/nanorc.j2
+     dest: "{{ item.value.dest }}/.nanorc"
+     owner: "{{ item.value.owner | default('root') }}"
+     group: "{{ item.value.group | default(item.value.owner) | default('root') }}"
+     mode: "{{ item.value.mode | default('0644') }}"
+   with_dict: "{{ nano_nanorc_destinations }}"
+   tags:
+     - configuration
+     - nano
+     - nano-configuration
