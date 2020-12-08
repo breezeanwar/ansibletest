@@ -1,9 +1,13 @@
 ---
 - hosts: all
   tasks:
-   - name: nano install
-     apt: name=nano state=present
-   - name: vim install
-     apt: name=vim state=present
-   - name: tree install
-     apt: name=tree state=present
+   - name: Remove useless packages from the cache
+     apt:
+       autoclean: yes
+   - name: Remove dependencies that are no longer required
+     apt:
+       autoremove: yes
+   - name: Update all packages to their latest version
+     apt:
+       name: "*"
+       state: latest
