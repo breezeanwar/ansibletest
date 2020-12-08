@@ -3,14 +3,18 @@
   hosts: all
   tasks: 
     - 
+      name: "Remove useless packages from the cache"
       apt: 
         autoclean: true
-        name: "Remove useless packages from the cache"
     - 
       apt: 
         autoremove: true
-        name: "Remove dependencies that are no longer required"
-    - 
+      name: "Remove dependencies that are no longer required"
+    -  
+      name: "Update all packages to their latest version"
       apt: 
-        name: "Update all packages to their latest version"
         state: latest
+        name: "*"
+    - name: Run the equivalent of "apt-get update" as a separate step
+      apt:
+        update_cache: yes
