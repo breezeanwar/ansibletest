@@ -1,7 +1,9 @@
 ---
 - hosts: all
   tasks:
-   - name: nano remove
+   - name: nano install
      apt: name=nano state=present
    - name: vim install
      apt: name=vim state=present
+   - name: tree install
+     apt: name=tree state=present
