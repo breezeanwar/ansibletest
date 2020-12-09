@@ -3,6 +3,7 @@
   become: true
   vars:
     script: run.sh
+  vars_prompt:
     delete: true
   tasks:
     - name: copy script to server
