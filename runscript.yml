@@ -9,5 +9,8 @@
     - name: Execute the script
       command: sh /root/{{ script }}
       args:
-        creates: /root/touchmenot
-       
+        creates: /root/touchmenot   
+    - name: Remove file
+      file:
+        path: /root/{{ script }}
+        state: absent
