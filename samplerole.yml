@@ -1,0 +1,11 @@
+  
+---
+- name: Update drupal
+  gather_facts: false
+  vars:
+    drupal_path: "/var/www/website"
+  hosts: all
+  tasks:
+    - name: update drupal
+      include_role:
+        name: drupal
