@@ -3,10 +3,7 @@
   become: true
   vars:
     script: run.sh
-  vars_prompt:
-    - name: delete
-      prompt: delete script?
-      private: no
+    delete: true
   tasks:
     - name: copy script to server
       copy: src=scripts/{{ script }} dest=/root owner=root group=root mode=0777
