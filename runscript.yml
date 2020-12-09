@@ -8,9 +8,7 @@
     - name: copy script to server
       copy: src=scripts/{{ script }} dest=/root owner=root group=root mode=0777
     - name: Execute the script
-      command: sh /root/{{ script }}
-      args:
-        creates: /root/touchmenot   
+      command: sh /root/{{ script }}  
     - name: Remove file
       file:
         path: /root/{{ script }}
