@@ -1,1 +1,1 @@
-rm /root/touchmenot
+rm -f /root/touchmenot
