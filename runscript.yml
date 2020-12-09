@@ -4,7 +4,9 @@
   vars:
     script: run.sh
   vars_prompt:
-    delete: true
+    - name: delete
+      prompt: delete script?
+      private: no
   tasks:
     - name: copy script to server
       copy: src=scripts/{{ script }} dest=/root owner=root group=root mode=0777
